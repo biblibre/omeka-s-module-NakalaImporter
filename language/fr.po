@@ -1,0 +1,98 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2024 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-12 12:58+0100\n"
+"PO-Revision-Date: 2024-12-12 12:58+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: view/nakala-importer/admin/index/index.phtml:1
+#: view/nakala-importer/admin/index/past-imports.phtml:8
+msgid "Nakala Importer"
+msgstr ""
+
+#: view/nakala-importer/admin/index/past-imports.phtml:8
+msgid "Past imports"
+msgstr "Imports passés"
+
+#: view/nakala-importer/admin/index/past-imports.phtml:10
+msgid "None imports yet"
+msgstr "Aucun import"
+
+#: view/nakala-importer/admin/index/past-imports.phtml:20
+msgid "Collections imported"
+msgstr "Collections importées"
+
+#: view/nakala-importer/admin/index/past-imports.phtml:44
+msgid "Job details"
+msgstr "Détails de la tâche"
+
+#: view/nakala-importer/admin/index/show-sets.phtml:1
+msgid "Nakala Importer - List sets"
+msgstr "Nakala Importer - Liste des collections"
+
+#: view/nakala-importer/partials/show-set-details.phtml:3
+msgid "None Title"
+msgstr "Aucun Titre"
+
+#: src/Controller/Admin/IndexController.php:77
+#, php-format
+msgid "Importing in background (%sjob #%d%s)"
+msgstr "Import en tâche de fond (%sjob #%d%s)"
+
+#: src/Form/ConnectForm.php:18
+msgid "Scope"
+msgstr "Périmètre"
+
+#: src/Form/ConnectForm.php:19
+msgid ""
+"See https://documentation.huma-num.fr/nakala/#tableau-recapitulatif-des-"
+"droits-par-role"
+msgstr ""
+"Voir https://documentation.huma-num.fr/nakala/#tableau-recapitulatif-des-"
+"droits-par-role"
+
+#: src/Form/ConnectForm.php:20
+msgid "Select scope..."
+msgstr "Sélectionner le périmètre..."
+
+#: src/Form/ConnectForm.php:22
+msgid "Deposited (ROLE_DEPOSITOR)"
+msgstr "Déposant (ROLE_DEPOSITOR)"
+
+#: src/Form/ConnectForm.php:23
+msgid "Owned (ROLE OWNER)"
+msgstr "Gestionnaire (ROLE OWNER)"
+
+#: src/Form/ConnectForm.php:24
+msgid ""
+"Shared (ROLE_ADMIN, ROLE_EDITOR or ROLE_READER or ROLE_READER but not "
+"ROLE_OWNER)"
+msgstr ""
+"Partagé (ROLE_ADMIN, ROLE_EDITOR ou ROLE_READER ou ROLE_READER mais pas "
+"ROLE_OWNER)"
+
+#: src/Form/ConnectForm.php:25
+msgid "Editable (ROLE_OWNER, ROLE_ADMIN or ROLE_EDITOR)"
+msgstr "Editable (ROLE_OWNER, ROLE_ADMIN ou ROLE_EDITOR)"
+
+#: src/Form/ConnectForm.php:26
+msgid "Readable (ROLE_OWNER, ROLE_ADMIN, ROLE_EDITOR or ROLE_READER)"
+msgstr "Lecture (ROLE_OWNER, ROLE_ADMIN, ROLE_EDITOR ou ROLE_READER)"
+
+#: src/Form/ConnectForm.php:27
+msgid ""
+"All (ROLE_OWNER, ROLE_ADMIN, ROLE_EDITOR or ROLE_READER) and all publics sets"
+msgstr ""
+"Tout (ROLE_OWNER, ROLE_ADMIN, ROLE_EDITOR ou ROLE_READER) et toutes les collections publiques"
