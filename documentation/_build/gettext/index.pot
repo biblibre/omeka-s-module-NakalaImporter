@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, BibLibre
+# This file is distributed under the same license as the NakalaImporter package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: NakalaImporter \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-12 12:25+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.rst:17
+msgid "Contents"
+msgstr ""
+
+#: ../../index.rst:2
+msgid "Introduction"
+msgstr ""
+
+#: ../../index.rst:5
+msgid "How does it work ?"
+msgstr ""
+
+#: ../../index.rst:7
+msgid "This Omeka S module allows to import resources from Nakala API. Select collection(s) you want, and the module will import the items and their media."
+msgstr ""
+
+#: ../../index.rst:11
+msgid "Where is the configuration"
+msgstr ""
+
+#: ../../index.rst:13
+msgid "After configuring the module with your API key (in `local.config.php` file) on the admin side you'll find a form allowing you to choose which Nakala collections to retrieve according to your rights `Nakala documentation`_."
+msgstr ""
