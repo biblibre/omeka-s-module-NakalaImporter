@@ -1,0 +1,5 @@
+repos:
+- repo: https://git.biblibre.com/omeka-s/pre-commit-hooks
+  rev: v0.1.1
+  hooks:
+    - id: php-cs-fixer

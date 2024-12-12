@@ -1,0 +1,9 @@
+<?php foreach ($collections as $collection) :?>
+    <?php $id = $collection->id; ?>
+    <?php $title = $collection->title; ?>
+    <?php if (isset($omekaItemSets[$id])) : ?>
+        <?php echo $omekaItemSets[$id]->linkPretty()?>
+    <?php else : ?>
+        <?php echo $this->translate(sprintf("%s (Deleted resource)", $title)); ?>
+    <?php endif; ?>
+<?php endforeach ?>

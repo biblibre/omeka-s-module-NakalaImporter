@@ -1,0 +1,47 @@
+<?php echo $this->pageTitle($this->translate('Nakala Importer - List sets')); ?>
+<?php if (!empty($httpError)) : ?>
+    <div>
+        <?php echo $httpError; ?>
+    </div>
+<?php else : ?>
+    <div>
+        <h4>
+            <?php echo $this->translate("Total: $totalRecords"); ?>
+        </h4>
+    </div>
+    <?php $this->trigger('view.index.before'); ?>
+
+    <?php $form->prepare(); ?>
+    <?php echo $this->form()->openTag($form); ?>
+    <fieldset id='page-actions'>
+        <button type="submit"><?php echo $this->translate('Import'); ?></button>
+    </fieldset>
+
+    <?php $this->trigger('view.index.form.before'); ?>
+    <?php echo $this->formCollection($form); ?>
+    <div>
+        <fieldset>
+            <table>
+                <thead>
+                    <tr>
+                        <th><?php echo $this->translate('Identifier'); ?></th>
+                        <th><?php echo $this->translate('Title'); ?></th>
+                        <th><?php echo $this->translate('Status'); ?></th>
+                        <th><?php echo $this->translate('Created'); ?></th>
+                        <th><?php echo $this->translate('Import'); ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($sets as $set): ?>
+                    <?php echo $this->showSetDetails($set); ?>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
+    <?php $this->trigger('view.index.form.after'); ?>
+
+    <?php echo $this->form()->closeTag(); ?>
+
+    <?php $this->trigger('view.index.after'); ?>
+<?php endif ?>
