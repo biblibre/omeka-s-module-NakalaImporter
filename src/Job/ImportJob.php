@@ -6,8 +6,7 @@ use Omeka\Job\AbstractJob;
 
 class ImportJob extends AbstractJob
 {
-    const MIGRATION_IDENTIFIER = 'MIG_NAKALA';
-    const MIGRATION_TITLE = 'Migration – Nakala';
+    const MIGRATION_SET = ['title' => 'Migration – Nakala', 'identifier' => 'MIG_NAKALA'];
     protected $propertiesMap;
     protected $itemSetsMap;
     protected $api;
@@ -37,11 +36,11 @@ class ImportJob extends AbstractJob
             return;
         }
 
-        $migrationItemSet = $this->findOrNewItemSet(self::MIGRATION_IDENTIFIER, self::MIGRATION_TITLE);
-
-        foreach ($setsToImport as $identifier => $title) {
-            $this->logger->info(sprintf("Import of '%s'", $title));
-            $setItemSet = $this->findOrNewItemSet($identifier, $title);
+        $migrationItemSet = $this->findOrNewItemSet(self::MIGRATION_SET['identifier'], self::MIGRATION_SET);
+        foreach ($setsToImport as $identifier) {
+            $setMetas = $this->getSetMetas($identifier);
+            $this->logger->info(sprintf("Import of '%s'", $identifier));
+            $setItemSet = $this->findOrNewItemSet($identifier, $setMetas);
             $this->importRecords($identifier, $setItemSet, $migrationItemSet);
         }
 
@@ -95,7 +94,7 @@ class ImportJob extends AbstractJob
         } while (isset($data['lastPage']) && $currentPage <= $data['lastPage']);
     }
 
-    protected function findOrNewItemSet($identifier, $title)
+    protected function findOrNewItemSet($identifier, $metas)
     {
         $data = [
             'property' => [
@@ -110,24 +109,39 @@ class ImportJob extends AbstractJob
         if (!empty($itemSet)) {
             return $itemSet[0];
         } else {
-            $newItemSet = $this->api->create('item_sets', [
-                'dcterms:title' => [
-                    [
-                        'property_id' => $this->propertiesMap['dcterms:title'],
-                        'type' => 'literal',
-                        'is_public' => '1',
-                        '@value' => $title,
+            if ($metas['identifier'] && $metas['title']) {
+                $itemSetData = [
+                    'dcterms:title' => [
+                        [
+                            'property_id' => $this->propertiesMap['dcterms:title'],
+                            'type' => 'literal',
+                            'is_public' => '1',
+                            '@value' => $metas['title'],
+                        ],
                     ],
-                ],
-                'dcterms:identifier' => [
-                    [
-                        'property_id' => $this->propertiesMap['dcterms:identifier'],
-                        'type' => 'literal',
-                        'is_public' => '1',
-                        '@value' => $identifier,
+                    'dcterms:identifier' => [
+                        [
+                            'property_id' => $this->propertiesMap['dcterms:identifier'],
+                            'type' => 'literal',
+                            'is_public' => '1',
+                            '@value' => $metas['identifier'],
+                        ],
                     ],
-                ],
-            ]);
+                ];
+            } else {
+                $itemSetData = [
+                    'dcterms:identifier' => [
+                        [
+                            'property_id' => $this->propertiesMap['dcterms:identifier'],
+                            'type' => 'literal',
+                            'is_public' => '1',
+                            '@value' => $identifier,
+                        ],
+                    ],
+                ];
+                $itemSetData = $this->addMetadatas($metas, $itemSetData);
+            }
+            $newItemSet = $this->api->create('item_sets', $itemSetData);
             return $newItemSet->getContent();
         }
     }
@@ -215,5 +229,12 @@ class ImportJob extends AbstractJob
     {
         $this->itemSetsImported[] = $itemSet;
         return $this->itemSetsImported;
+    }
+
+    protected function getSetMetas(string $identifier)
+    {
+        $endpoint = "/collections/$identifier";
+        $data = $this->apiClient->sendRequest($endpoint, 'GET');
+        return $data['metas'];
     }
 }

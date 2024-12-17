@@ -17,6 +17,7 @@ class ShowSetDetails extends AbstractHelper
             [
                 'identifier' => $set['identifier'],
                 'status' => $set['status'],
+                'metas' => $set['metas'],
                 'title' => $title,
                 'uri' => $set['uri'],
                 'creation_date' => $formattedDate,
