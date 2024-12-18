@@ -1,6 +1,6 @@
 <tr id="set_<?php echo $identifier ?>">
     <td>
-        <input class="set-checkbox" type="checkbox" name="selectedSets[]" value="<?php echo $identifier?>"/>
+        <input class="set-checkbox" type="checkbox" name="selectedSets[<?php echo $identifier?>]" value="<?php echo $title?>"/>
         <a href="<?php echo $uri ?>" target="_blank"><?php echo $identifier ?></a>
     </td>
     <td><?php echo $title ? $title : $this->translate('None Title') ?></td>

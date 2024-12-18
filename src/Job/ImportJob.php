@@ -37,10 +37,10 @@ class ImportJob extends AbstractJob
         }
 
         $migrationItemSet = $this->findOrNewItemSet(self::MIGRATION_SET['identifier'], self::MIGRATION_SET);
-        foreach ($setsToImport as $identifier) {
+        foreach ($setsToImport as $identifier => $title) {
             $setMetas = $this->getSetMetas($identifier);
-            $this->logger->info(sprintf("Import of '%s'", $identifier));
             $setItemSet = $this->findOrNewItemSet($identifier, $setMetas);
+            $this->logger->info(sprintf("Item set '%s' (%s) created with id %d", $setItemSet->displayTitle(), $identifier, $setItemSet->id()));
             $this->importRecords($identifier, $setItemSet, $migrationItemSet);
         }
 
@@ -51,19 +51,24 @@ class ImportJob extends AbstractJob
         ];
 
         $this->api->create('nakala_importer_import', $nakalaImportJson);
+        $this->logger->info("Import done");
     }
 
     protected function importRecords(string $identifier, $setItemSet, $migrationItemSet)
     {
-        $currentPage = 1;
         $endpoint = "/collections/$identifier/datas";
+        // First call to get lastPage and set as currentPage (API response not orderable yet)
+        $firstCallSetup = $this->apiClient->sendRequest($endpoint, 'GET');
+        $currentPage = $firstCallSetup['lastPage'];
         do {
             $data = $this->apiClient->sendRequest($endpoint, 'GET', ['page' => $currentPage]);
             if (empty($data['data'])) {
                 $this->logger->info(sprintf('None data into this collection, item set "%s" will be deleted', $setItemSet->id()));
                 $this->api->delete('item_sets', $setItemSet->id(), [], []);
             } else {
-                foreach ($data['data'] as $record) {
+                // Inversed data to get items from oldest to newest
+                $dataReversed = array_reverse($data['data']);
+                foreach ($dataReversed as $record) {
                     $item = $this->getItemByIdentifier($record['identifier']);
                     if ($item) {
                         $this->logger->info(sprintf('Item with identifier %s already exists (%s)', $record['identifier'], $item[0]->id()));
@@ -86,12 +91,14 @@ class ImportJob extends AbstractJob
                         $this->logger->info('Append medias to item ' . $item->id());
                     }
                 }
-                if ($currentPage == 1) {
-                    $this->addToItemSetsImported(['id' => $setItemSet->id(), 'title' => $setItemSet->displayTitle(), 'identifier' => $identifier]);
+                $newItem = ['id' => $setItemSet->id(), 'title' => $setItemSet->displayTitle(), 'identifier' => $identifier];
+                $existingKey = array_search($newItem['id'], array_column($this->getItemSetsImported(), 'id'));
+                if ($existingKey === false) {
+                    $this->addToItemSetsImported($newItem);
                 }
             }
-            $currentPage++;
-        } while (isset($data['lastPage']) && $currentPage <= $data['lastPage']);
+            $currentPage--;
+        } while ($currentPage > 0);
     }
 
     protected function findOrNewItemSet($identifier, $metas)
