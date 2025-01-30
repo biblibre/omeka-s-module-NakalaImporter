@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NakalaImporter \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-13 16:12+0100\n"
+"POT-Creation-Date: 2025-01-30 11:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../index.rst:26
+#: ../../index.rst:17
 msgid "Contents"
 msgstr ""
 
@@ -37,9 +37,5 @@ msgid "Where is the configuration"
 msgstr ""
 
 #: ../../index.rst:13
-msgid "After configuring the module with your API key (in `local.config.php` file) on the admin side you'll find a form allowing you to choose which Nakala collections to retrieve according to your rights `Nakala documentation`_."
-msgstr ""
-
-#: ../../index.rst:16
-msgid "Extract of `local.config.php` file:"
+msgid "After configuring the module with your API key (in `configure` action in modules list) on the admin side you'll find a form allowing you to choose which Nakala collections to retrieve according to your rights `Nakala documentation`_."
 msgstr ""

@@ -10,16 +10,7 @@ Select collection(s) you want, and the module will import the items and their me
 Where is the configuration
 --------------------------
 
-After configuring the module with your API key (in `local.config.php` file) on the admin side you'll find a form allowing you to choose which Nakala collections to retrieve according to your rights `Nakala documentation`_.
-
-.. note::
-   Extract of `local.config.php` file:
-
-   .. code-block:: php
-
-      'nakala-importer' => [
-          'api_key' => 'your-nakala-api-key',
-      ],
+After configuring the module with your API key (in `configure` action in modules list) on the admin side you'll find a form allowing you to choose which Nakala collections to retrieve according to your rights `Nakala documentation`_.
 
 .. _Nakala documentation: https://documentation.huma-num.fr/nakala/#tableau-recapitulatif-des-droits-par-role
 
@@ -27,6 +18,5 @@ After configuring the module with your API key (in `local.config.php` file) on t
    :maxdepth: 2
    :caption: Contents
 
-   configuration
    features
    tutorials

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: NakalaImporter \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-13 16:12+0100\n"
+"POT-Creation-Date: 2025-01-30 11:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 
-#: ../../index.rst:26
+#: ../../index.rst:17
 msgid "Contents"
 msgstr "Contenus"
 
@@ -48,17 +48,12 @@ msgstr "Où est la configuration"
 
 #: ../../index.rst:13
 msgid ""
-"After configuring the module with your API key (in `local.config.php` "
-"file) on the admin side you'll find a form allowing you to choose which "
-"Nakala collections to retrieve according to your rights `Nakala "
+"After configuring the module with your API key (in `configure` action in "
+"modules list) on the admin side you'll find a form allowing you to choose"
+" which Nakala collections to retrieve according to your rights `Nakala "
 "documentation`_."
 msgstr ""
-"Après avoir configurer le module avec votre clé d'API (dans le fichier "
-"`local.config.php`) vous verrez côté admin un formulaire vous permettant "
+"Après avoir configurer le module avec votre clé d'API (sous l'action `configure` "
+"dans la liste des modules) vous verrez côté admin un formulaire vous permettant "
 "de choisir le 'scope' (voir `Nakala documentation`_) Nakala utilisé pour "
 "afficher ensuite les collections à importer."
-
-#: ../../index.rst:16
-msgid "Extract of `local.config.php` file:"
-msgstr "Extrait du fichier `local.config.php`"
-
