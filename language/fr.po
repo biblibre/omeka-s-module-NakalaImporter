@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-13 16:16+0100\n"
+"POT-Creation-Date: 2025-01-30 10:54+0100\n"
 "PO-Revision-Date: 2024-12-12 12:58+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -54,6 +54,10 @@ msgstr "Aucun Titre"
 #, php-format
 msgid "Importing in background (%sjob #%d%s)"
 msgstr "Import en tâche de fond (%sjob #%d%s)"
+
+#: src/Form/ConfigForm.php:15
+msgid "API key"
+msgstr "Clé d'API"
 
 #: src/Form/ConnectForm.php:18
 msgid "Scope"
