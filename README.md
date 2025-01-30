@@ -25,7 +25,7 @@ This plugin offers a new way to import resources:
 
 This module import resources directly from Nakala API with a mapping one to one (not configurable).
 
-After configuring the module with your API key (in `local.config.php` file) on the admin side you'll find a form allowing you to choose which Nakala collections to retrieve according to your rights [Nakala documentation here](https://documentation.huma-num.fr/nakala/#tableau-recapitulatif-des-droits-par-role).
+After configuring the module with your API key (`configure` action on modules list) on the admin side you'll find a form allowing you to choose which Nakala collections to retrieve according to your rights [Nakala documentation here](https://documentation.huma-num.fr/nakala/#tableau-recapitulatif-des-droits-par-role).
 
 When you submit the form, you'll find your collections, with the option of importing them by selecting them.
 
