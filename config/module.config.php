@@ -118,7 +118,4 @@ return [
             ],
         ],
     ],
-    'nakala-importer' => [
-        'api_key' => 'your-api-key',
-    ],
 ];

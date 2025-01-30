@@ -31,4 +31,35 @@ class Module extends AbstractModule
         $connection = $serviceLocator->get('Omeka\Connection');
         $connection->exec('DROP TABLE IF EXISTS nakala_importer_import');
     }
+
+    public function getConfigForm($renderer)
+    {
+        $formElementManager = $this->getServiceLocator()->get('FormElementManager');
+        $settings = $this->getServiceLocator()->get('Omeka\Settings');
+
+        $form = $formElementManager->get('NakalaImporter\Form\ConfigForm');
+        $form->setData([
+            'api_key' => $settings->get('nakalaimporter_api_key', ''),
+        ]);
+
+        return $renderer->formCollection($form, false);
+    }
+
+    public function handleConfigForm($controller)
+    {
+        $formElementManager = $this->getServiceLocator()->get('FormElementManager');
+        $settings = $this->getServiceLocator()->get('Omeka\Settings');
+
+        $form = $formElementManager->get('NakalaImporter\Form\ConfigForm');
+        $form->setData($controller->params()->fromPost());
+        if (!$form->isValid()) {
+            $controller->messenger()->addErrors($form->getMessages());
+            return false;
+        }
+
+        $formData = $form->getData();
+        $settings->set('nakalaimporter_api_key', $formData['api_key']);
+
+        return true;
+    }
 }
